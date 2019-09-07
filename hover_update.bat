@@ -1,0 +1,1 @@
+@PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%CD%\ps_update_hover.ps1'"

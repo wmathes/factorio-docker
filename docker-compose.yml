@@ -1,0 +1,12 @@
+version: '2'
+services:
+  factorio:
+    env_file: .env
+    image:
+      wmathes/factorio
+    restart: always
+    ports:
+     - "34197:34197/udp"
+     - "27015:27015/tcp"
+    volumes:
+     - /opt/factorio:/factorio
