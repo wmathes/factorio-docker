@@ -19,9 +19,3 @@ jobs:
       env: VERSION_SHORT=0.17 EXTRA_TAG=latest
       script:
         - ./build.sh $VERSION_SHORT
-    - <<: *build
-      env: VERSION_SHORT=0.16 EXTRA_TAG=stable
-    - <<: *build
-      env: VERSION_SHORT=0.15
-    - <<: *build
-      env: VERSION_SHORT=0.14

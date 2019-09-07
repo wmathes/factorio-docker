@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cat "$CONFIG/rconpw"
+cat "${CONFIG}/rconpw"
