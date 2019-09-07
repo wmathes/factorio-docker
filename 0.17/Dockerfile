@@ -17,7 +17,12 @@ ENV PORT=34197 \
     SCENARIOS=/factorio/scenarios \
     SCRIPTOUTPUT=/factorio/script-output \
     PUID="$PUID" \
-    PGID="$PGID"
+    PGID="$PGID" \
+    RCLONE_VERSION=v1.49.1 \
+    STORAGE_TYPE=s3 \
+    STORAGE_PROVIDER=DigitalOcean \
+    STORAGE_REGION=sgp1 \
+    STORAGE_ENDPOINT=sgp1.digitaloceanspaces.com
 
 RUN set -ox pipefail \
     && archive="/tmp/factorio_headless_x64_$VERSION.tar.xz" \
@@ -36,6 +41,17 @@ RUN set -ox pipefail \
     && addgroup -g "$PGID" -S "$GROUP" \
     && adduser -u "$PUID" -G "$GROUP" -s /bin/sh -SDH "$USER" \
     && chown -R "$USER":"$GROUP" /opt/factorio /factorio
+
+# install rclone
+RUN apk add --no-cache \
+    ca-certificates \
+    wget
+
+RUN cd /tmp \
+  && wget -qO ./rclone.zip http://downloads.rclone.org/${RCLONE_VERSION}/rclone-${RCLONE_VERSION}-linux-amd64.zip \
+  && unzip ./rclone.zip \
+  && mv ./rclone-*/rclone /usr/bin \
+  && (rm -rf "/tmp/"* 2>/dev/null || true)
 
 VOLUME /factorio
 
