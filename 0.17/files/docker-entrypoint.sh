@@ -9,6 +9,15 @@ mkdir -p "$MODS"
 mkdir -p "$SCENARIOS"
 mkdir -p "$SCRIPTOUTPUT"
 
+# Restore if configured and no saves exists
+if [[ ! -f $CONFIG/rconpw ]]; then
+  if [ -n "${FDK_RESTORE_ON_FIRST_START}" ]; then
+    echo "Attempting to ${FDK_RESTORE_ON_FIRST_START}";
+    /restore.sh "${FDK_RESTORE_ON_FIRST_START}";
+  fi
+fi
+
+
 if [[ ! -f $CONFIG/rconpw ]]; then
   # Generate a new RCON password if none exists
   pwgen 15 1 >"$CONFIG/rconpw"
