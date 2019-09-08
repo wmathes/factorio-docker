@@ -18,11 +18,7 @@ ENV PORT=34197 \
     SCRIPTOUTPUT=/factorio/script-output \
     PUID="$PUID" \
     PGID="$PGID" \
-    RCLONE_VERSION=v1.49.1 \
-    STORAGE_TYPE=s3 \
-    STORAGE_PROVIDER=DigitalOcean \
-    STORAGE_REGION=sgp1 \
-    STORAGE_ENDPOINT=sgp1.digitaloceanspaces.com
+    RCLONE_VERSION=v1.49.1
 
 RUN set -ox pipefail \
     && archive="/tmp/factorio_headless_x64_$VERSION.tar.xz" \

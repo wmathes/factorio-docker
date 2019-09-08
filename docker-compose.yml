@@ -3,7 +3,7 @@ services:
   factorio:
     env_file: .env
     image:
-      wmathes/factorio
+      wmathes/factorio:0.17
     restart: always
     ports:
      - "34197:34197/udp"
