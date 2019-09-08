@@ -5,9 +5,9 @@ TARGET="${C}:${!X}"
 
 printf "\n\e[1;34m%-6s\e[m\n" "Storing /opt/factorio as ${TARGET}"
 mkdir -p /opt/factorio
-rclone copy -P --create-empty-src-dirs ${CONFIG} "${TARGET}/config" -P --create-empty-src-dirs
-rclone copy -P --create-empty-src-dirs ${SAVES} "${TARGET}/saves" -P --create-empty-src-dirs
-rclone copy -P --create-empty-src-dirs ${MODS} "${TARGET}/config" -P --create-empty-src-dirs
+rclone copy -P --create-empty-src-dirs ${CONFIG} "${TARGET}/config"
+rclone copy -P --create-empty-src-dirs ${SAVES} "${TARGET}/saves"
+rclone copy -P --create-empty-src-dirs ${MODS} "${TARGET}/mods"
 
 printf "\n\e[1;34m%-6s\e[m\n" "Stored saves:"
 ls -w 1 ${SAVES}
